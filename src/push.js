@@ -3,6 +3,7 @@ const chalk = require('chalk')
 const fs = require('fs')
 const path = require('path')
 const getPaths = require('../util/get-paths')
+const {getWidgetConfig, getSecretsConfig} = require('../util/get-configs')
 
 
 
@@ -79,7 +80,6 @@ const putTemplate = async ({
 
 
 module.exports = argv => {
-    console.log(argv)
     const {
         cwd,
         configFilePath,
@@ -93,8 +93,8 @@ module.exports = argv => {
         const config = require(configFilePath)
         const options = {
             config,
-            secrets: require(secretsFilePath),
-            schema: require(schemaFilePath),
+            secrets: getSecretsConfig(argv),
+            schema: getWidgetConfig(argv),
             storefront_api_query: fs.readFileSync(storefrontApiQueryFilePath, 'utf8'),
             template: fs.readFileSync(templateFilePath, 'utf8'),
             configFilePath,
