@@ -89,8 +89,6 @@ module.exports = argv => {
         templateFilePath,
     } = getPaths(argv)
 
-    console.log(configFilePath);
-
     try {
         const config = require(configFilePath)
         const options = {
@@ -105,11 +103,9 @@ module.exports = argv => {
 
 
         if (!config.uuid) {
-            console.log("Not POSTing!")
-            // postTemplate(options)
+            postTemplate(options)
         } else {
-            console.log("Not PUTting!")
-            // putTemplate(options)
+            putTemplate(options)
         }
 
     } catch (err) {
