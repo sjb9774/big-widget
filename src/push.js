@@ -79,6 +79,7 @@ const putTemplate = async ({
 
 
 module.exports = argv => {
+    console.log(argv)
     const {
         cwd,
         configFilePath,
@@ -87,6 +88,8 @@ module.exports = argv => {
         storefrontApiQueryFilePath,
         templateFilePath,
     } = getPaths(argv)
+
+    console.log(configFilePath);
 
     try {
         const config = require(configFilePath)
@@ -102,12 +105,15 @@ module.exports = argv => {
 
 
         if (!config.uuid) {
-            postTemplate(options)
+            console.log("Not POSTing!")
+            // postTemplate(options)
         } else {
-            putTemplate(options)
+            console.log("Not PUTting!")
+            // putTemplate(options)
         }
 
     } catch (err) {
         console.log(`No ${argv.$0} project found. Run ${chalk.cyan('big-widget init')} to create a project`)
+        console.log(err)
     }
 }
