@@ -46,6 +46,18 @@ A [BigCommerce GraphQL Storefront API](https://developer.bigcommerce.com/api-doc
 ### template.html
 HTML and Handlebars used to populate the `template` of the widget template.
 
+### TODO
+1. Allow `big-widget push` to accept a directory argument
+	1. This is to simply replace the default functionality of always using the current directory
+3. Allow `big-widget push` to accept a `--recursive` flag when passed a directory
+4. Allow a "default" widget configuration/secrets file in the project or widget director root
+	1. ie, merge this default file with the defined secrets/config file per widget (if any)
+5. Allow pushing widgets by some identifier other than the "current" UUID -- perhaps name?
+	1. It's important to have a consistent identifier that logically tracks a single widget, since the "uuid" changes with each update
+	it doesn't truly track the logical object we intend to track
+6. Create BC deployment pipeline, automatically pushing widgets on merge.
+	1. Separate from this repo, but need to make sure big-widget works with it
+
 #### MIT License
 Copyright 2021 Patrick Puente
 
